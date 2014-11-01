@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services ../../vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection/Loader/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="orm.em" factory-class="Doctrine\ORM\EntityManager" factory-method="create">
+            <argument type="collection">
+                <argument key="host">%db.host%</argument>
+                <argument key="dbname">%db.schema%</argument>
+                <argument key="user">%db.user%</argument>
+                <argument key="password">%db.passwd%</argument>
+                <argument key="driver">%db.driver%</argument>
+                <argument key="charset">%db.charset%</argument>
+            </argument>
+            <argument type="service" id="orm.config" />
+        </service>
+        
+        <service id="orm.connection" factory-service="orm.em" factory-method="getConnection" />
+        
+        <service id="orm.config" class="Doctrine\ORM\Configuration">
+            <call method="setMetadataCacheImpl">
+                <argument type="service" id="app.cache" />
+            </call>
+            <call method="setResultCacheImpl">
+                <argument type="service" id="app.cache" />
+            </call>
+            <call method="setQueryCacheImpl">
+                <argument type="service" id="app.cache" />
+            </call>
+            <call method="setProxyDir">
+                <argument>%app.basedir%tmp</argument>
+            </call>
+            <call method="setProxyNamespace">
+                <argument>%orm.proxy.namespace%</argument>
+            </call>
+            <call method="setAutoGenerateProxyClasses">
+                <argument>%app.devmode%</argument>
+            </call>
+            <call method="setMetadataDriverImpl">
+                <argument type="service"  id="orm.config.annotation.driver" />
+            </call>
+        </service>
+        
+        <service id="orm.config.annotation.driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver">
+            <argument type="service" id="app.annotations.reader" />
+            <argument type="expression">parameter('app.basedir') ~ parameter('orm.entity.basedir')</argument>
+        </service>
+    </services>
+</container>

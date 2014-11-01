@@ -1,0 +1,27 @@
+{
+    "name": "lcobucci/blogmv-api",
+    "description": "PHP API for BlogMV using lcobucci/action-mapper and doctrine/orm",
+    "require": {
+        "php": ">=5.5",
+        "lcobucci/action-mapper": "dev-develop@dev",
+        "doctrine/orm": "~2.5@dev",
+        "doctrine/dbal": "~2.5@dev",
+        "doctrine/migrations": "*@dev",
+        "symfony/expression-language": "*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luís Otávio Cobucci Oblonczyk",
+            "email": "lcobucci@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lcobucci\\Library\\": ["src", "test"]
+        } 
+    }
+}

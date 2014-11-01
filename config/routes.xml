@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routing xmlns="http://lcobucci.com/action-mapper/schema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://lcobucci.com/action-mapper/schema ../vendor/lcobucci/action-mapper/src/Lcobucci/ActionMapper2/Config/schema/routing.xsd ">
+    <routes>
+        <route pattern="/*" class="Lcobucci\Library\Books\Controllers\Books" />
+    </routes>
+</routing>

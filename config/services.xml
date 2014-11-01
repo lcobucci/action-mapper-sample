@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services ../vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection/Loader/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="di-container/environment.xml" />
+        <import resource="environment.xml" ignore-errors="true" />
+        
+        <import resource="di-container/caching.xml" />
+        <import resource="di-container/orm.xml" />
+        <import resource="di-container/books.xml" />
+    </imports>
+</container>

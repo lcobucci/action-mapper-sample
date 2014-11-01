@@ -1,6 +1,6 @@
 {
-    "name": "lcobucci/blogmv-api",
-    "description": "PHP API for BlogMV using lcobucci/action-mapper and doctrine/orm",
+    "name": "lcobucci/action-mapper-sample",
+    "description": "Sample project of ActionMapper",
     "require": {
         "php": ">=5.5",
         "lcobucci/action-mapper": "dev-develop@dev",
